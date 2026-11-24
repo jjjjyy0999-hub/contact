@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>더샵 레이크파크 | 분양 안내 및 관심고객 등록</title>
+  <script>
+    // 접속 시 항상 맨 위 첫 화면부터 열리도록 설정 (#inquiry 자동 스크롤 및 이전 위치 복원 방지)
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener("load", function () {
+      window.scrollTo(0, 0);
+    });
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet" />
@@ -70,7 +83,7 @@
       font-size: 13.5px !important;
     }
 
-    /* 첫 화면 메인 히어로 (위치·구조 유지 + 선명도 보정 필터 적용) */
+    /* 첫 화면 메인 히어로 */
     .hero {
       position: relative;
       min-height: 82vh;
@@ -99,7 +112,6 @@
     .hero-photo.loaded {
       opacity: 1;
     }
-    /* 위~중간 영역은 완전 투명(0%)으로 비워 사진 원본을 그대로 노출 */
     .hero-scrim {
       position: absolute;
       inset: 0;
@@ -356,7 +368,7 @@
     </div>
   </header>
 
-  <!-- 첫 화면 메인 비주얼 (배경 이미지 선명 표시 + 버튼 제거) -->
+  <!-- 첫 화면 메인 비주얼 -->
   <section class="hero" id="top">
     <img id="heroPhoto" class="hero-photo" alt="분양 메인 배경 이미지" />
     <div class="hero-scrim"></div>
